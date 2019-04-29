@@ -87,4 +87,21 @@
         id, create_datetime, update_datetime, all_legs, arthrosis, assay_check, birth, blood_pressure, check_result, check_time, chest_check, college, color_or_code, correct_left_view, correct_right_view, culture_level, ear_sick, foot, glandula_thyroidea, grade, growth, heart, height, history_check, hypodontia, left_audition, left_view, liver, lung, lymph, major, mind, name, nation, native_place, occupation, other_check, other_eyes_sick, other_internal_sick, other_sense_sick, other_surgery_sick, paranasal_sinus, photo, present_address, pulse, real_age, remark, right_audition, right_view, sealer, sex, sign_for_assay, sign_for_chest, sign_for_ear, sign_for_eyes, sign_for_internal, sign_for_mouth, sign_for_result, sign_for_surgery, single_color_judge, skin, smell, spine_backbone, spleen, stammer, stu_no, suggest_for_check, throat, tooth_place, tooth_sick, user_id, waistline, weight, work_place,check_year
     </sql>
 
+	<select id="getDataAnalysis" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List"/>
+		from check_info
+		where user_id = #{userId}
+		order by check_time
+	</select>
+
+	<select id="getCurrentCheckInfo" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List"/>
+		from check_info
+		where user_id = #{userId}
+		order by check_time desc
+		limit 0,1
+	</select>
+
 </mapper>

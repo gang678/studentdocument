@@ -14,6 +14,7 @@ public enum ExceptionEnums {
     /**
      * 错误返回信息
      */
+    NO_CHECK_INFO(404,"暂无健康档案表，无法进行数据分析"),
     CHOOSE_FILE(404,"文件未上传"),
     IS_NOT_LOGIN(404,"用户未登录"),
     UPLOAD_FAIL(404,"上传失败"),
