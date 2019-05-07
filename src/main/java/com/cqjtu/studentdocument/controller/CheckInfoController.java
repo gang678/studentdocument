@@ -8,10 +8,12 @@ import com.cqjtu.studentdocument.service.CheckInfoService;
 import com.cqjtu.studentdocument.utils.dto.AnalysisData;
 import com.cqjtu.studentdocument.utils.dto.HealthDTO;
 import io.swagger.annotations.Api;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import tk.mybatis.mapper.entity.Example;
 
@@ -27,8 +29,29 @@ import java.util.Map;
 @RequestMapping(value = "api/checkInfo")
 public class CheckInfoController extends BaseController<CheckInfoService,CheckInfo,Integer> {
 
+
     @Resource
     CheckInfoDao checkInfoDao;
+
+
+    @Override
+    @RequiresPermissions("checkInfo:add")
+    public ResponseEntity<CheckInfo> save(@RequestBody CheckInfo entity) {
+        return super.save(entity);
+    }
+
+    @Override
+    @RequiresPermissions("checkInfo:update")
+    public ResponseEntity<CheckInfo> update(@RequestBody CheckInfo entity) {
+        return super.update(entity);
+    }
+
+    @Override
+    @RequiresPermissions("checkInfo:delete")
+    @GetMapping(value = "delete/{id}")
+    public ResponseEntity<String> delete(@PathVariable("id") Integer integer) {
+        return super.delete(integer);
+    }
 
     /**
      * 判断体检表是否存在
