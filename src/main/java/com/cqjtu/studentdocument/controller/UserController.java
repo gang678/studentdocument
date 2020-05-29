@@ -82,7 +82,7 @@ public class UserController extends BaseController<UserService,User,Integer> {
 
     @ApiOperation(value = "用户登录接口")
     @RequestMapping("login")
-    public ResponseEntity<User> login(@RequestBody User entity, HttpServletRequest r){
+    public ResponseEntity<User> login(@RequestBody User entity, HttpServletRequest request){
         UsernamePasswordToken token = new UsernamePasswordToken(entity.getUsername(), entity.getPassword());
         Subject subject = SecurityUtils.getSubject();
         try {

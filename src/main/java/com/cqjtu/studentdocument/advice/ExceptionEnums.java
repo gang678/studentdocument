@@ -27,7 +27,8 @@ public enum ExceptionEnums {
     ADD_ERROR(400,"新增失败"),
     DELETE_ERROR(400,"删除失败"),
     GET_LIST_ERROR(400,"获取列表失败"),
-    GET_ITEM(400,"获取对象失败")
+    GET_ITEM(400,"获取对象失败"),
+    NO_WEIGHT_HEIGHT(400,"当前档案未完善身高体重信息")
     ;
 
     /**

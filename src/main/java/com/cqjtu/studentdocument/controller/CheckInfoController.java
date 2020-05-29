@@ -74,6 +74,9 @@ public class CheckInfoController extends BaseController<CheckInfoService,CheckIn
     @GetMapping("/getBim")
     ResponseEntity judgeIsHealth(Double height,Double weight){
         String suggestion;
+        if (height==null || weight ==null){
+            throw new MyException(ExceptionEnums.NO_WEIGHT_HEIGHT);
+        }
         Double result = weight/((height/100)*(height/100));
         NumberFormat nf = NumberFormat.getNumberInstance();
         nf.setMaximumFractionDigits(2);
