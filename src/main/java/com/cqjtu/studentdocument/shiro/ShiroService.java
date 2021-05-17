@@ -59,6 +59,8 @@ public class ShiroService {
         filterChainDefinitionMap.put("/api/uploadFile/upload", "anon");
 
         filterChainDefinitionMap.put("/login", "anon");
+        filterChainDefinitionMap.put("/api/role/list", "anon");
+        filterChainDefinitionMap.put("/api/user/add", "anon");
         //未授权跳转url
         filterChainDefinitionMap.put("/unauthorized","anon");
         // 加载数据库中配置的资源权限列表

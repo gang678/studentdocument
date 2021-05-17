@@ -3,6 +3,7 @@ package com.cqjtu.studentdocument.controller;
 import com.cqjtu.studentdocument.entity.HealthDocument;
 import com.cqjtu.studentdocument.service.HealthDocumentService;
 import io.swagger.annotations.Api;
+import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -19,7 +20,7 @@ import java.util.Date;
 public class HealthDocumentController extends BaseController<HealthDocumentService,HealthDocument,Integer> {
 
     @Override
-    @RequiresPermissions("healthDocument:add")
+    @RequiresPermissions(value = {"healthDocument:add","healthDocument:add"},logical = Logical.AND)
     public ResponseEntity<HealthDocument> save(@RequestBody HealthDocument entity) {
         if (entity.getIsPublished()==1){
             entity.setPublishData(new Date());
